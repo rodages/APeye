@@ -3,12 +3,11 @@ import {
   Bill,
   BillStatus,
   PushOperationStatus,
-  Supplier,
 } from "@codat/accounting/dist/sdk/models/shared";
 import {
   Button,
   Card,
-  DataTable,
+  CodeBlock,
   DateInput,
   SelectInput,
   SelectInputValue,
@@ -20,7 +19,9 @@ import { BillDetailsError } from "models/billDetailsError";
 import * as React from "react";
 import { useEffect, useState } from "react";
 
-import styles from "./Supplier.module.scss";
+import BillLines from "components/BillLines";
+
+import styles from "./Bill.module.scss";
 
 const sdk = new CodatAccounting({
   security: {
@@ -58,6 +59,16 @@ const Home: React.FC = () => {
     subTotal: 0,
     taxAmount: 0,
     totalAmount: 0,
+    lineItems: [
+      {
+        taxAmount: 0,
+        unitAmount: 0,
+        quantity: 0,
+        taxRateRef: {
+          id: "NON",
+        },
+      },
+    ],
   });
 
   const setBillDetailsFor = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -105,15 +116,15 @@ const Home: React.FC = () => {
   };
 
   async function createBill() {
-    const res = await sdk.bills.create({
+    const response = await sdk.bills.create({
       bill: billDetails,
       companyId: companyId,
       connectionId: "c9617a8c-e5e4-4554-ab26-0c94e253b134",
     });
 
     if (
-      res.statusCode == 200 &&
-      res.createBillResponse?.status == PushOperationStatus.Pending
+      response.statusCode == 200 &&
+      response.createBillResponse?.status == PushOperationStatus.Pending
     ) {
       // handle response
       addToast({
@@ -163,7 +174,7 @@ const Home: React.FC = () => {
             placeholder={`Currency`}
             name="currency"
             value={billDetails.currency}
-            maxLength={100}
+            maxLength={3}
             onChange={(e) => setBillDetailsFor(e)}
             showCharacterCount
             labelClassName={styles.inputLabel}
@@ -176,9 +187,8 @@ const Home: React.FC = () => {
             placeholder={`Currency Rate`}
             name="currencyRate"
             value={billDetails.currencyRate}
-            maxLength={100}
+            type="number"
             onChange={(e) => setBillDetailsFor(e)}
-            showCharacterCount
             labelClassName={styles.inputLabel}
             inputClassName={styles.inputClass}
           />
@@ -188,7 +198,6 @@ const Home: React.FC = () => {
             label="Supplier"
             showLabel
             placeholder="Supplier"
-            className={styles.clientType}
             handleSelectedItemChange={onSupplierChange}
             items={suppliers}
           />
@@ -213,30 +222,23 @@ const Home: React.FC = () => {
             inputClassName={styles.inputClass}
           />
         </div>
-        <div data-testid={`sub-total`}>
-          <TextInput
-            label="Sub Total"
-            placeholder={`Sub Total`}
-            name="subTotal"
-            type="number"
-            value={billDetails.subTotal}
-            onChange={(e) => setBillDetailsFor(e)}
-            labelClassName={styles.inputLabel}
-            inputClassName={styles.inputClass}
-          />
-        </div>
-        {/* <div data-testid={`lines`}>
-          <DataTable
-            rowsInfo={lineItemsTableRows}
-            columnDefs={getLineItemColumnDefinitions()}
-            isLayoutAuto
-            hasBorder
-          />
-        </div> */}
-        <Button label="Create" onClick={createBill} />
-      </Card>
-      <Card>
-        <pre>{JSON.stringify(billDetails, null, 2)}</pre>
+        <BillLines billDetails={billDetails} setBillDetails={setBillDetails} />
+        <Button
+          label="Create"
+          onClick={createBill}
+          className={styles.createButton}
+        />
+        <CodeBlock
+          code={billDetails}
+          copyOptions={{
+            onSuccess: () => {},
+            onFailure: () => {},
+          }}
+          downloadOptions={{
+            filename: "pushPayload.json",
+            onFailure: () => {},
+          }}
+        ></CodeBlock>
       </Card>
     </div>
   );
