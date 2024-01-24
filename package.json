@@ -29,16 +29,19 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@codat/boilerplate-tools": "^10.0.1",
     "@testing-library/react": "^14.1.2",
-    "@types/react": "^18.2.29",
-    "@types/react-dom": "^18.2.14",
+    "@codat/boilerplate-tools": "^10.0.1",
+    "@types/node": "^20.10.4",
+    "@types/ramda": "^0.29.9",
+    "@types/react": "^18.2.19",
+    "@types/react-dom": "^18.2.18",
     "@types/react-router-dom": "^5.3.3",
+    "@types/validator": "^13.11.8",
     "cp-cli": "^2.0.0",
     "cross-env": "^7.0.3",
     "identity-obj-proxy": "^3.0.0",
     "jest-environment-jsdom": "^29.7.0",
-    "typescript": "^4.9.4"
+    "typescript": "^5.2.2"
   },
   "browserslist": {
     "production": [
@@ -63,17 +66,21 @@
     "report-dir": "cypress-coverage"
   },
   "dependencies": {
+    "@codat/accounting": "^0.42.0",
     "@codat/analytics": "^1.1.1",
     "@codat/client-cookie-manager": "^3.8.0",
-    "@codat/orchard-ui": "^34.22.2",
-    "axios": "^1.6.1",
+    "@codat/orchard-ui": "^34.22.5",
+    "axios": "^1.6.5",
     "axios-hooks": "^5.0.2",
     "history": "^5.3.0",
     "path-to-regexp": "^6.2.1",
     "query-string": "^8.1.0",
+    "ramda": "^0.29.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.21.0",
-    "universal-cookie": "^7.0.1"
+    "react-router-dom": "^6.21.3",
+    "universal-cookie": "^7.0.1",
+    "validator": "^13.11.0",
+    "zod": "^3.22.4"
   }
 }
