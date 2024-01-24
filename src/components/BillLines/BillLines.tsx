@@ -36,7 +36,10 @@ const BillLines: React.FC<{
 
   useEffect(() => {
     async function fetchAccounts() {
-      const accountResult = await sdk.accounts.list({ companyId: companyId });
+      const accountResult = await sdk.accounts.list({
+        companyId: companyId,
+        pageSize: 5000,
+      });
       const accounts = accountResult.accounts?.results
         ? accountResult.accounts?.results.map((account) => {
             return {

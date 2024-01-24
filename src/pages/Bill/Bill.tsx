@@ -39,7 +39,10 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     async function fetchSuppliers() {
-      const supplierResult = await sdk.suppliers.list({ companyId: companyId });
+      const supplierResult = await sdk.suppliers.list({
+        companyId: companyId,
+        pageSize: 5000,
+      });
       const suppliers = supplierResult.suppliers?.results
         ? supplierResult.suppliers?.results.map((supplier) => {
             return {
