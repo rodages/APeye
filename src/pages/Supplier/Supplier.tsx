@@ -7,6 +7,7 @@ import {
 import {
   Button,
   Card,
+  CodeBlock,
   TextInput,
   Typography,
   useToast,
@@ -172,10 +173,22 @@ const Home: React.FC = () => {
             inputClassName={styles.inputClass}
           />
         </div>
-        <Button label="Create" onClick={createSupplier} />
-      </Card>
-      <Card>
-        <pre>{JSON.stringify(supplierDetails, null, 2)}</pre>
+        <Button
+          label="Create"
+          onClick={createSupplier}
+          className={styles.createButton}
+        />
+        <CodeBlock
+          code={supplierDetails}
+          copyOptions={{
+            onSuccess: () => {},
+            onFailure: () => {},
+          }}
+          downloadOptions={{
+            filename: "pushPayload.json",
+            onFailure: () => {},
+          }}
+        ></CodeBlock>
       </Card>
     </div>
   );
