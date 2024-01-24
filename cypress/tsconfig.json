@@ -1,0 +1,7 @@
+{
+  "extends": "@codat/boilerplate-tools/tsconfig/cypress",
+  "compilerOptions": {
+    "baseUrl": "../src"
+  },
+  "include": ["../src/**/*", "**/*"]
+}

@@ -1,0 +1,1 @@
+Put component tests with the component in a __tests__ folder. See `src/pages/Home` for an example.

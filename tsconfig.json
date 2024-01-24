@@ -1,0 +1,19 @@
+{
+  "extends": "@codat/boilerplate-tools/tsconfig/app",
+  "compilerOptions": {
+    "baseUrl": "./src"
+  },
+  "exclude": ["node_modules", "dist"],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.cy.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}

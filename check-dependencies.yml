@@ -1,0 +1,27 @@
+schedules:
+  - cron: "0 12 * * 0" # run every Sunday at 12:00
+    always: true # run even when there are no code changes
+    branches:
+      include:
+        - main
+    batch: true
+    displayName: Weekly Run
+
+trigger: none
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: Codat/YAMLBuildTemplates
+
+# https://dev.azure.com/codat/Codat/_git/YAMLBuildTemplates?path=/Extras/Dependabot.yml
+stages:
+  - template: Extras/Dependabot.yml@templates
+    parameters:
+      PackageManager: npm
+      # You can find your azure devops team here https://dev.azure.com/codat/Codat/_settings/teams
+      TeamName: Orchard Working Group
+      WorkItemIteration: Backlog
+      SquashPullRequest: true
+      SetAutoComplete: true

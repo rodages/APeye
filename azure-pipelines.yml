@@ -1,0 +1,20 @@
+trigger:
+  - main
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: Codat/YAMLBuildTemplates
+
+# https://dev.azure.com/codat/Codat/_git/YAMLBuildTemplates?path=/Build/Frontend.yml
+stages:
+  - template: Build/Frontend.yml@templates
+    parameters:
+      AppName: Template # This should fit into your sonarcloud pattern `Codat - SonarCloud - ${{parameters.AppName}} UI`
+      ArtifactName: TemplateUI
+      ArchiveArtifact: true
+      SkipUnitTests: true
+      BuildInfrastructure: false
+      DisableSonarCloud: true # Remove this line when using the template
+      TypeCheckScript: check-types

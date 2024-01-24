@@ -1,0 +1,79 @@
+{
+  "name": "react-starter-template",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Starter kit for micro-frontend React application ",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.config.ts",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.ts",
+    "check-types": "tsc --build",
+    "test": "cross-env NODE_ENV=test jest --config config/jest.config.ts",
+    "test:watch": "jest --watchAll=true --config config/jest.config.ts",
+    "test:coverage": "jest --watchAll=false --coverage --testResultsProcessor=jest-sonar-reporter --config config/jest.config.ts",
+    "lint:css": "stylelint src/**/*.css",
+    "lint:js": "eslint src --ext .ts,.tsx,.js,.jsx --max-warnings 0",
+    "lint-check": "yarn lint:css && yarn lint:js",
+    "lint-fix": "yarn lint-fix:css && yarn lint-fix:js",
+    "lint-fix:css": "stylelint src/**/*.css --fix",
+    "lint-fix:js": "eslint --fix --max-warnings 0",
+    "format-check": "prettier --check src",
+    "format-fix": "prettier --list-different --write src",
+    "prepare": "husky install",
+    "cy:run": "cypress run --config baseUrl=https://localhost:4000/",
+    "cy:open": "cypress open --config baseUrl=https://localhost:4000/",
+    "test:cypress-ci": "cross-env START_SERVER_AND_TEST_INSECURE=1 HOST=localhost PORT=4000 start-server-and-test start https-get://localhost:4000 cy:run",
+    "test:cypress": "cross-env START_SERVER_AND_TEST_INSECURE=1 HOST=localhost PORT=4000 start-server-and-test start https-get://localhost:4000 cy:open",
+    "test:cypress-ci-components": "cross-env BABEL_ENV=test cypress run --component"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@codat/boilerplate-tools": "^10.0.1",
+    "@testing-library/react": "^14.1.2",
+    "@types/react": "^18.2.29",
+    "@types/react-dom": "^18.2.14",
+    "@types/react-router-dom": "^5.3.3",
+    "cp-cli": "^2.0.0",
+    "cross-env": "^7.0.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "typescript": "^4.9.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json}": [
+      "yarn format-fix",
+      "yarn lint-fix:js"
+    ],
+    "src/**/*.css": "yarn lint-fix:css"
+  },
+  "nyc": {
+    "report-dir": "cypress-coverage"
+  },
+  "dependencies": {
+    "@codat/analytics": "^1.1.1",
+    "@codat/client-cookie-manager": "^3.8.0",
+    "@codat/orchard-ui": "^34.22.2",
+    "axios": "^1.6.1",
+    "axios-hooks": "^5.0.2",
+    "history": "^5.3.0",
+    "path-to-regexp": "^6.2.1",
+    "query-string": "^8.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.0",
+    "universal-cookie": "^7.0.1"
+  }
+}

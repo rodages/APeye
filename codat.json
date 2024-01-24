@@ -1,0 +1,15 @@
+{
+  "owner": {
+    "team": "Platform Team - Frontend",
+    "group": "platform"
+  },
+  "specifications": [],
+  "slackChannels": {
+    "engineering": "#team-tech-frontend",
+    "notifications": [
+      {
+        "channel": "#tech-frontend-notifications"
+      }
+    ]
+  }
+}

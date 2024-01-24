@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "include": ["src"],
+  "exclude": [
+    "**/*.cy.ts",
+    "**/*.cy.tsx",
+    "**/*.cy.js",
+    "**/*.cy.jsx",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/*.test.tsx",
+    "**/*.spec.tsx",
+    "**/*.test.js",
+    "**/*.spec.js",
+    "**/*.test.jsx",
+    "**/*.spec.jsx",
+    "src/__mocks__",
+    "src/testUtils.tsx"
+  ]
+}

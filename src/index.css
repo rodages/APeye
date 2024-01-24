@@ -1,0 +1,57 @@
+@font-face {
+  font-family: Axiforma;
+  font-weight: 700;
+  font-style: italic;
+  src:
+    url("https://static.codat.io/public/fonts/Axiforma-BoldItalic.woff2") format("woff2"),
+    url("https://static.codat.io/public/fonts/Axiforma-BoldItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: Axiforma;
+  font-weight: 700;
+  src:
+    url("https://static.codat.io/public/fonts/Axiforma-Bold.woff2") format("woff2"),
+    url("https://static.codat.io/public/fonts/Axiforma-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: Axiforma;
+  font-weight: 400;
+  src:
+    url("https://static.codat.io/public/fonts/Axiforma-Regular.woff2") format("woff2"),
+    url("https://static.codat.io/public/fonts/Axiforma-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: Axiforma;
+  font-weight: 400;
+  font-style: italic;
+  src:
+    url("https://static.codat.io/public/fonts/Axiforma-Italic.woff2") format("woff2"),
+    url("https://static.codat.io/public/fonts/Axiforma-Italic.woff") format("woff");
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+input,
+button {
+  font-family: Axiforma, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
