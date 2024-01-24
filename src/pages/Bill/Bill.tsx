@@ -152,6 +152,7 @@ const Home: React.FC = () => {
         </Typography>
         <div data-testid={`due-date`}>
           <DateInput
+            highlightToday
             label="Due Date"
             placeholder={`Due Date`}
             onValueChange={(value) => onDueDateChanged(value)}
@@ -207,6 +208,7 @@ const Home: React.FC = () => {
         </div>
         <div data-testid={`issue-date`}>
           <DateInput
+            highlightToday
             label="Issue Date"
             placeholder={`Issue Date`}
             onValueChange={(value) => onIssueDateChanged(value)}
