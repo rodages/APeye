@@ -166,7 +166,7 @@ const Home: React.FC = () => {
             placeholder={`Currency`}
             name="defaultCurrency"
             value={supplierDetails.defaultCurrency}
-            maxLength={100}
+            maxLength={3}
             onChange={(e) => setSupplierDetailsFor(e)}
             showCharacterCount
             labelClassName={styles.inputLabel}
